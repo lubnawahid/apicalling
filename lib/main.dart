@@ -55,30 +55,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
 
-        child: Column(
+        child: FutureBuilder(
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:[
-          FutureBuilder(
+          future:fetchAlbum() ,
+          builder: (context,snapshot){
+            if(snapshot.hasData){
+              print('userId');
+              return Text(snapshot.data!.id.toString(),style: TextStyle(color: Colors.red,fontSize: 50),);
 
-            future:fetchAlbum() ,
-            builder: (context,snapshot){
-              if(snapshot.hasData){
-                print('userId');
-                return Text(snapshot.data!.id.toString());
-
-              }
-              else if (snapshot.hasError)
-              {
-                print('ygyuserId');
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-              },
-          ),
-
-
-          ],
+            }
+            else if (snapshot.hasError)
+            {
+              print('ygyuserId');
+              return Text('${snapshot.error}');
+            }
+            return const CircularProgressIndicator();
+            },
         ),
       ),
     );
