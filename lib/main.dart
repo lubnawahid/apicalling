@@ -1,6 +1,8 @@
 import 'package:apicalling/service/apiservice.dart';
 import 'package:flutter/material.dart';
 
+import 'model/model.dart';
+
 
 
 void main() {
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context,snapshot){
               if(snapshot.hasData){
                 print('userId');
-                return Text(snapshot.data!['userId'].toString());
+                return Text(snapshot.data!.id.toString());
 
               }
               else if (snapshot.hasError)

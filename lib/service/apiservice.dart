@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-Future<Map<String,dynamic>>fetchAlbum() async{
+import '../model/model.dart';
+
+Future<User>fetchAlbum() async{
   var responce = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-  return jsonDecode(responce.body);
+  var user = jsonDecode(responce.body);
+  return User.fromJson(user);
 }
